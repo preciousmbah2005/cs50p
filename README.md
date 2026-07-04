@@ -15,4 +15,4 @@ Harvard's CS50P completed as part of my backend development journey.
 - [ ] Week 9 - Et Cetera
 
 ## About
-This repository document every lecture practice, short, and problem set from CS50P
+This repository documents every lecture practice, short, and problem set from CS50P
