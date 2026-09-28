@@ -1,5 +1,5 @@
 def main():
-    expression = input("Expression: ").split()
+    expression = input("Expression: ")
     number1, operator, number2 = expression.split()
     number1 = float(number1)
     number2 = float(number2)

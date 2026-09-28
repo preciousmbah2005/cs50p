@@ -5,6 +5,7 @@ while i < 3:
     i += 1
 
 """
+
 """
 # Using for loop with the list data type
 for _ in range(10):
@@ -21,9 +22,11 @@ for _ in range(n):
 
 """
 
+
 def main():
     number = get_number()
     meow(number)
+
 
 def get_number():
     while True:
@@ -32,8 +35,10 @@ def get_number():
             break
     return n
 
+
 def meow(n):
     for _ in range(n):
         print("meow")
+
 
 main()

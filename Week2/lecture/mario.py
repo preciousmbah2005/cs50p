@@ -1,9 +1,11 @@
 def main():
     print_square(4)
 
+
 # def print_square(size):
 #     for i in range(size):
 #         print("#" * size)
+
 
 def print_square(size):
 
@@ -38,7 +40,6 @@ def print_column(height):
         print("#\n" * height, end="")
 
 """
-
 
 
 main()
