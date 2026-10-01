@@ -1,9 +1,9 @@
 import inflect
 while True:
     try:
-        prompts = input("Input: ")
+        user_input = input("Name: ")
     except EOFError:
+        print(f"Adieu, adieu to {name})
         break
 
-print("Adieu")
 
