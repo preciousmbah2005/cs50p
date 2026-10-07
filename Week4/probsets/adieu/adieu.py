@@ -3,7 +3,7 @@ while True:
     try:
         user_input = input("Name: ")
     except EOFError:
-        print(f"Adieu, adieu to {name})
+        print(f"Adieu, adieu to {user_input}")
         break
 
 
