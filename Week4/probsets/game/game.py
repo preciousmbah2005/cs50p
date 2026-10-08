@@ -1,26 +1,34 @@
 import random
 
-
 while True:
     try:
         user_input = int(input("Level: "))
-        num = random.randint(1, 10000)
 
-        if user_input > 0:
-            break
-        else:
+        if user_input <= 0:
             continue
+
     except ValueError:
         continue
+    break
+
+num = random.randint(1, user_input)
 
 while True:
     try:
         guess = int(input("Guess: "))
-        if guess == num:
-            print("Just right!")
-        elif guess > num:
-            print("Too large!")
+
+        if guess > 0:
+            if guess == num:
+                print("Just right!")
+                break
+            elif guess > num:
+                print("Too large!")
+            else:
+                print("Too small!")
         else:
-            print("To small!")
+            continue
+
     except ValueError:
         continue
+
+
