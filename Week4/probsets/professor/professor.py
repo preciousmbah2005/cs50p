@@ -2,7 +2,8 @@ import random
 
 def main():
     chosen_level = get_level()
-
+    generated_level = generate_integer(chosen_level)
+    
 
 
 def get_level():
@@ -21,11 +22,13 @@ def get_level():
 
 
 def generate_integer(level):
-    correct_count = 0
+    level = 0
     wrong_count = 0
     trial = 0
+        
+    
 
-    while correct_count < 10:
+    while level < 10:
         X = random.randint(1, 10)
         Y = random.randint(1, 10)
         correct_answer = X + Y
@@ -34,9 +37,10 @@ def generate_integer(level):
             user_answer = int(input(f"{X} + {Y} = "))
 
             if user_answer == correct_answer:
-                    correct_count += 1
+                    level += 1
                     trial += 1
-                    return
+                    break
+                    
             else:
                 wrong_count += 1
                 print("EEE")
@@ -45,9 +49,10 @@ def generate_integer(level):
                     print(f"{X} + {Y} = {correct_answer}")
                     wrong_count = 0
                     trial -= 1
-                    return
+                    break
+                    
             
-print(f"Score:  {trial}")       
+    return print(f"Score:  {trial}")
 
 
 if __name__ == "__main__":
