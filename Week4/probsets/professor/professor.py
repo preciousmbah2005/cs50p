@@ -3,7 +3,53 @@ import random
 def main():
     chosen_level = get_level()
     generated_level = generate_integer(chosen_level)
-    
+
+    score = 0
+    trail = 0
+    wrong_count = 0
+
+    while score < 10:
+         correct_answer = generate_integer(chosen_level) + generate_integer(chosen_level)
+
+         while True:
+              user_answer = int(input(f" {generated_level} + {generated_level} = "))
+
+              if user_answer == correct_answer:
+                   score += 1
+                   trail += 1
+
+              else:
+                   wrong_count += 1
+                   print("EEE")
+
+                   if wrong_count == 3:
+                        print(f" {generated_level} + {generated_level} = {correct_answer}")
+
+    print(f"Score: {trail}")
+
+    # wrong_count = 0
+    # trial = 0
+
+    # while True:
+    #     user_answer = int(input(f"{X} + {Y} = "))
+
+    #     if user_answer == correct_answer:
+    #             level += 1
+    #             trial += 1
+    #             break
+
+    #     else:
+    #         wrong_count += 1
+    #         print("EEE")
+
+    #         if wrong_count == 3:
+    #             print(f"{X} + {Y} = {correct_answer}")
+    #             wrong_count = 0
+    #             break
+
+
+    # print(f"Score:  {trial}")
+
 
 
 def get_level():
@@ -14,45 +60,23 @@ def get_level():
             prompt = int(input("Level: "))
 
             if prompt in random_list:
-                return 
-            
+                return prompt
+
         except ValueError:
                 continue
-    
+
 
 
 def generate_integer(level):
-    level = 0
-    wrong_count = 0
-    trial = 0
-        
-    
 
-    while level < 10:
-        X = random.randint(1, 10)
-        Y = random.randint(1, 10)
-        correct_answer = X + Y
-
-        while True:
-            user_answer = int(input(f"{X} + {Y} = "))
-
-            if user_answer == correct_answer:
-                    level += 1
-                    trial += 1
-                    break
-                    
-            else:
-                wrong_count += 1
-                print("EEE")
-
-                if wrong_count == 3:
-                    print(f"{X} + {Y} = {correct_answer}")
-                    wrong_count = 0
-                    trial -= 1
-                    break
-                    
-            
-    return print(f"Score:  {trial}")
+    if level == 1:
+        return random.randint(0, 9)
+    elif level == 2:
+        return random.randint(10, 99)
+    elif level == 3:
+         return random.randint(100, 999)
+    else:
+         raise ValueError
 
 
 if __name__ == "__main__":
