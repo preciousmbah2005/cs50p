@@ -2,60 +2,48 @@ import random
 
 def main():
     chosen_level = get_level()
-    generated_level = generate_integer(chosen_level)
 
     score = 0
-    trail = 0
+    trial = 0
     wrong_count = 0
 
-    while score < 10:
+    while trial < 10:
         X = generate_integer(chosen_level)
         Y = generate_integer(chosen_level)
         correct_answer = X + Y
+        wrong_count = 0
 
         while True:
-            user_answer = int(input(f"{X} + {Y} = "))
+            try:
+                user_answer = int(input(f"{X} + {Y} = "))
 
-            if user_answer == correct_answer:
-                score += 1
-                trail += 1
-                break
-
-
-            else:
-                wrong_count += 1
-                print("EEE")
+                if user_answer == correct_answer:
+                    score += 1
+                    trial += 1
+                    wrong_count = 0
+                    break
+            
+                else:
+                    wrong_count += 1
+                    print("EEE")
 
                 if wrong_count == 3:
                     print(f"{X} + {Y} = {correct_answer}")
-                    score += 0
+                    wrong_count = 0
+                    trial += 1
                     break
 
-    print(f"Score: {trail}")
-
-    # wrong_count = 0
-    # trial = 0
-
-    # while True:
-    #     user_answer = int(input(f"{X} + {Y} = "))
-
-    #     if user_answer == correct_answer:
-    #             level += 1
-    #             trial += 1
-    #             break
-
-    #     else:
-    #         wrong_count += 1
-    #         print("EEE")
-
-    #         if wrong_count == 3:
-    #             print(f"{X} + {Y} = {correct_answer}")
-    #             wrong_count = 0
-    #             break
+            except ValueError:
+                wrong_count += 1
+                print("EEE")
+                if wrong_count == 3:
+                    print(f"{X} + {Y} = {correct_answer}")
+                    wrong_count = 0
+                    trial += 1
+                    break
 
 
-    # print(f"Score:  {trial}")
-
+    print(f"Score: {score}")
 
 
 def get_level():
@@ -69,7 +57,7 @@ def get_level():
                 return prompt
 
         except ValueError:
-                continue
+            continue
 
 
 
@@ -80,9 +68,9 @@ def generate_integer(level):
     elif level == 2:
         return random.randint(10, 99)
     elif level == 3:
-         return random.randint(100, 999)
+        return random.randint(100, 999)
     else:
-         raise ValueError
+        raise ValueError
 
 
 if __name__ == "__main__":
