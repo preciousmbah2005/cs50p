@@ -1,11 +1,13 @@
 import requests
 
-url = "https://api.github.com/octocat"
+url = "https://api.github.com/users/octocat"
 
 try:
-    response = requests.get(url)
-    print(response.status_code)
-    
+    response = requests.get(url, timeout=10)
+    print("Status:", response.status_code)
+    print("Content-Type:", response.headers.get("Content-Type"))
+    print("Body review:", (response.text))
+
     content = response.json()
     print(content["login"])
     print(content["public_repos"])
