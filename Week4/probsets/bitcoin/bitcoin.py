@@ -6,19 +6,19 @@ url = "https://rest.coincap.io/v3/assets/bitcoin?apiKey=dd45cfed6fd8c418a4af8ad5
 
 try:
     response = requests.get(url)
+    response.raise_for_status()
 
     if len(sys.argv) == 2:
         data = response.json()
-        converting = float(sys.argv[1])
         content = float(data["data"]["priceUsd"])
+        converting = float(sys.argv[1])
         amount = converting * content
         print(f"${amount:,.4f}")
     elif len(sys.argv) == 1:
-        print("Missing command-line argument")
-        
+        sys.exit("Missing command-line argument")
+
 except requests.RequestException:
-    print("Error!!")
     sys.exit()
 except ValueError:
-    print("Commmand-line argument is not a number")
+    sys.exit("Commmand-line argument is not a number")
 
