@@ -9,7 +9,7 @@ elif len(sys.argv) > 2:
 
 filename = sys.argv[1]
 
-if not filename.endswith((".py", ".csv", ".txt")):
+if not filename.endswith(".py"):
     sys.exit("Not a Python file")
 
 try:
@@ -21,10 +21,10 @@ try:
                 if clean_line and not clean_line.startswith("#"):
                     loc += 1
             print(loc)
-        else:
-            csv_reader = csv.reader(file)
-            total_lines = sum(1 for line in file)
-            print(total_lines)
-    
+        # else:
+        #     csv_reader = csv.reader(file)
+        #     total_lines = sum(1 for line in file)
+        #     print(total_lines)
+
 except FileNotFoundError:
     sys.exit("File does not exist")
