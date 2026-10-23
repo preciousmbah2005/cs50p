@@ -23,6 +23,6 @@ def main():
     else:
         print(f"{result}%")
 
-
-main()
+if __name__ == "__main__":
+    main()
 
