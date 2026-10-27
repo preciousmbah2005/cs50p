@@ -1,5 +1,6 @@
 import sys
 import csv
+from PIL import Image
 
 # Validate that exactly two command-line arguments were provided.
 if len(sys.argv) < 3:
@@ -17,5 +18,13 @@ if not file_input.endswith((".jpg", ".png")) and not file_output.endswith((".jpg
 # Ensure the input and output files use the same extension.
 if file_input.endswith(".jpg") and file_output.endswith(".png"):
     sys.exit("Input and output have different extensions")
+
 elif file_input.endswith(".png") and file_output.endswith(".jpg"):
     sys.exit("Input and output have different extensions")
+
+
+with (
+    Image.open(file_input) as infile,
+    open(file_output) as outfile
+):
+    ...
