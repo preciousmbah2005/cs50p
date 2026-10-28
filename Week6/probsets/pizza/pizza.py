@@ -16,18 +16,18 @@ if not file_name.lower().endswith(".csv"):
 
 try:
     with (
-        open("regular.csv", newline='') as file1,
-        open("sicilian.csv", newline='') as file2
+        open(file_name, newline='') as file1,
+        open(file_name, newline='') as file2
         ):
         if file_name == "regular.csv":
             csv_reader_one = csv.reader(file1)
             for line in csv_reader_one:
                 print(tabulate(csv_reader_one, tablefmt="grid"))
-            
+
         elif file_name == "sicilian.csv":
             csv_reader_two = csv.reader(file2)
             for line in csv_reader_two:
-                    print(tabulate(csv_reader_two, tablefmt="grid"))
+                print(tabulate(csv_reader_two, tablefmt="grid"))
 
 except FileNotFoundError:
     sys.exit("Not a CSV file")
@@ -35,4 +35,4 @@ except FileNotFoundError:
 
 
 
-   
+
