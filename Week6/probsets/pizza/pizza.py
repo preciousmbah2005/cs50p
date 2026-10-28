@@ -1,38 +1,28 @@
-import sys
 import csv
+import sys
 from tabulate import tabulate
 
 
-if len(sys.argv) > 2:
-    sys.exit("Too many command-line arguments")
-elif len(sys.argv) < 2:
-    sys.exit("Too few comman-line arguments")
+def main():
+    if len(sys.argv) < 2:
+        sys.exit("Too few command-line arguments")
+    elif len(sys.argv) > 2:
+        sys.exit("Too many command-line arguments")
 
-file_name = sys.argv[1]
+    file_name = sys.argv[1]
 
-if not file_name.lower().endswith(".csv"):
-    sys.exit("Not a CSV file")
+    if not file_name.lower().endswith(".csv"):
+        sys.exit("Not a CSV file")
 
+    try:
+        with open(file_name) as file:
+            reader = csv.reader(file)
+            table = list(reader)
+    except FileNotFoundError:
+        sys.exit("File does not exist")
 
-try:
-    with (
-        open(file_name, newline='') as file1,
-        open(file_name, newline='') as file2
-        ):
-        if file_name == "regular.csv":
-            csv_reader_one = csv.reader(file1)
-            for line in csv_reader_one:
-                print(tabulate(csv_reader_one, tablefmt="grid"))
-
-        elif file_name == "sicilian.csv":
-            csv_reader_two = csv.reader(file2)
-            for line in csv_reader_two:
-                print(tabulate(csv_reader_two, tablefmt="grid"))
-
-except FileNotFoundError:
-    sys.exit("Not a CSV file")
+    print(tabulate(table, headers="firstrow", tablefmt="grid"))
 
 
-
-
-
+if __name__ == "__main__":
+    main()
