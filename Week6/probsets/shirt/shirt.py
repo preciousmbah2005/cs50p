@@ -1,6 +1,6 @@
 import sys
-import csv
 from PIL import Image
+from PIL import ImageOps
 
 # Validate that exactly two command-line arguments were provided.
 if len(sys.argv) < 3:
@@ -25,6 +25,9 @@ elif file_input.endswith(".png") and file_output.endswith(".jpg"):
 
 with (
     Image.open(file_input) as infile,
-    open(file_output) as outfile
+    Image.open("shirt.png") as overlay
+    
 ):
-    ...
+    photo = ImageOps.fit(infile, overlay.size)
+    photo.paste(overlay, overlay)
+    photo.save(file_output)
