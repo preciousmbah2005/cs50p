@@ -2,7 +2,7 @@ import re
 
 email = input("What's your email? ").strip()
 
-if re.search(r".+@.+\.com", email):
+if re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+", email):
     print("Valid")
 else:
     print("Invalid")
