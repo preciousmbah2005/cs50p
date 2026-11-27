@@ -15,7 +15,7 @@ class Jar:
             raise ValueError("Invalid number of cookies")
 
         if self._size + n > self._capacity:
-            raise ValueErrro("Not enough capacity")
+            raise ValueError("Not enough capacity")
 
         self._size += n
 
@@ -26,12 +26,12 @@ class Jar:
         if n > self._size:
             raise ValueError("Not enough cookies")
 
-        self.size -= n
+        self._size -= n
 
 
     @property
     def capacity(self):
-        return self._capactiy
+        return self._capacity
 
 
     @property
